@@ -186,6 +186,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     window.addEventListener("scroll", () => {
         if (lastScrollY < window.scrollY) {
         nav.classList.add("nav--hidden");
+        nav.classList.remove("visible");
         } else {
         nav.classList.remove("nav--hidden");
         }
