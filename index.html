@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com  -->
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -274,8 +273,8 @@
                 <div class="img-container">
                     <img src="img/team/Chair.jpg" alt="Chairperson">
                     <div class="img-overlay">
-                        <ion-icon name="logo-github" class="icon"></ion-icon>
-                        <ion-icon name="logo-linkedin" class="icon"></ion-icon>
+                        <li><a href="https://www.github.com/"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
                     </div>
                 </div>   
                 <div class="name">
@@ -287,8 +286,8 @@
                 <div class="img-container">
                     <img src="img/team/Vice-Chair.jpg" alt="Vice Chairperson">
                     <div class="img-overlay">
-                        <ion-icon name="logo-github" class="icon"></ion-icon>
-                        <ion-icon name="logo-linkedin" class="icon"></ion-icon>
+                        <li><a href="https://www.github.com/"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
                     </div>
                 </div>   
                 <div class="name">
@@ -298,10 +297,23 @@
             </div>
             <div class="card">
                 <div class="img-container">
-                    <img src="img/team/" alt="Treasurer">
+                    <img src="img/team/Secretary.jpg" alt="Secretary">
                     <div class="img-overlay">
-                        <ion-icon name="logo-github" class="icon"></ion-icon>
-                        <ion-icon name="logo-linkedin" class="icon"></ion-icon>
+                        <li><a href="https://www.github.com/"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
+                    </div>
+                </div>   
+                <div class="name">
+                    <b>Siddharth Sushill</b>
+                </div>
+                <span>Secretary</span>
+            </div>
+            <div class="card">
+                <div class="img-container">
+                    <img src="img/team/Treasurer.jpg" alt="Treasurer">
+                    <div class="img-overlay">
+                        <li><a href="https://www.github.com/"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
                     </div>
                 </div>   
                 <div class="name">
@@ -313,8 +325,8 @@
                 <div class="img-container">
                     <img src="img/team/Media-PR-Design-Lead.jpg" alt="Media, PR, Design Lead">
                     <div class="img-overlay">
-                        <ion-icon name="logo-github" class="icon"></ion-icon>
-                        <ion-icon name="logo-linkedin" class="icon"></ion-icon>
+                        <li><a href="https://www.github.com/"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
                     </div>
                 </div>   
                 <div class="name">
@@ -326,14 +338,27 @@
                 <div class="img-container">
                     <img src="img/team/Events-Lead.jpg" alt="Events Lead">
                     <div class="img-overlay">
-                        <ion-icon name="logo-github" class="icon"></ion-icon>
-                        <ion-icon name="logo-linkedin" class="icon"></ion-icon>
+                        <li><a href="https://www.github.com/"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
                     </div>
                 </div>   
                 <div class="name">
                     <b>Daksh Jha</b>
                 </div>
                 <span>Events Lead</span>
+            </div>
+            <div class="card">
+                <div class="img-container">
+                    <img src="img/team/Webmaster.jpg" alt="Webmaster">
+                    <div class="img-overlay">
+                        <li><a href="https://www.github.com/mariojnoronha"><ion-icon name="logo-github" class="icon"></ion-icon></a></li>
+                        <li><a href="https://www.linkedin.com/in/mario-jude-noronha"><ion-icon name="logo-linkedin" class="icon"></ion-icon></a></li>
+                    </div>
+                </div>   
+                <div class="name">
+                    <b>Mario Noronha</b>
+                </div>
+                <span>Webmaster</span>
             </div>
         </div>
     </section>
@@ -344,23 +369,23 @@
         <div class="box">
             <div class="contact form">
                 <h3>Send a Message</h3>
-                <form class="contact-form" action="post-test.php" method="POST">
+                <form class="contact-form" action="sendmail.php" method="POST">
                     <div class="formBox">
                         <div class="row50">
                             <div class="inputBox">
                                 <span>First Name</span>
-                                <input id="f-name" type="text" placeholder="John">
+                                <input name="firstName" id="firstName" type="text" autocomplete="given-name" placeholder="John"/>
                             </div>
                             <div class="inputBox">
                                 <span>Last Name</span>
-                                <input id="l-name" type="text" placeholder="Doe">
+                                <input name="lastName" id="lastName" type="text" autocomplete="family-name" placeholder="Doe"/>
                             </div>
                         </div>
 
                         <div class="row100">
                             <div class="inputBox">
                                 <span>Email</span>
-                                <input id="email" type="text" placeholder="johndoe@email.com">
+                                <input id="email" type="email" placeholder="johndoe@email.com" autocomplete="off">
                             </div>
                         </div>
 
@@ -389,10 +414,10 @@
             <div class="wave" id="wave4"></div>
         </div>
         <ul class="social_icon">
-            <li><a href="#"><ion-icon name="mail" color = "white"></ion-icon></a></li>
+            <li><a href="#https://www.instagram.com/ieee_computer_society_xim/profilecard/?igsh=aWswcXJpOXJtaDl2"><ion-icon name="mail" color = "white"></ion-icon></a></li>
             <li><a href="https://www.instagram.com/ieee_computer_society_xim/profilecard/?igsh=aWswcXJpOXJtaDl2"><ion-icon name="logo-instagram"></ion-icon></a></li>
-            <li><a href="#"><ion-icon name="logo-linkedin"></ion-icon></a></li>
-            <li><a href="#"><ion-icon name="logo-github"></ion-icon></ion-icon></a></li>
+            <li><a href="#https://www.instagram.com/ieee_computer_society_xim/profilecard/?igsh=aWswcXJpOXJtaDl2"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+            <li><a href="#https://www.instagram.com/ieee_computer_society_xim/profilecard/?igsh=aWswcXJpOXJtaDl2"><ion-icon name="logo-github"></ion-icon></ion-icon></a></li>
         </ul>
         <ul class="menu">
             <li><a href="#hero">Home</a></li>

@@ -525,6 +525,19 @@ body {
     color: #eee;
 }
 
+footer .social_icon,
+footer .menu {
+    position:relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.team li{
+    list-style: none;
+}
+
 .contactUs {
     background: linear-gradient(90deg,#e49f30 0%, #e49f30 30%, #ffab00 30%, #ffab00 100%);
     position: relative;
@@ -1037,9 +1050,17 @@ footer .wave#wave4 {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     }
 
+    body {
+        cursor: auto !important;
+    }
+    .cursor,
+    .cursor-trail {
+        display: none !important;
+    }
+
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 385px) {
     .event-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
