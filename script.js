@@ -198,104 +198,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Contact form message handling
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const form = document.getElementById('contact-form');
-//     const btn = document.getElementById('submit-button');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('submit-button');
 
-//     if (!form || !btn) return;
+    if (!form || !btn) return;
 
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const error = urlParams.get('error');
-//     const success = urlParams.get('success');
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    const success = urlParams.get('success');
 
-//     if (success === 'true') {
-//         showMessage('Message sent successfully! We will get back to you soon.', 'success');
-//     } else if (error === 'config') {
-//         showMessage('Server configuration error. Please try again later.', 'error');
-//     } else if (error === 'send') {
-//         showMessage('Failed to send message. Please try again later.', 'error');
-//     }
+    if (success === 'true') {
+        showMessage('Message sent successfully! We will get back to you soon.', 'success');
+    } else if (error === 'config') {
+        showMessage('Server configuration error. Please try again later.', 'error');
+    } else if (error === 'send') {
+        showMessage('Failed to send message. Please try again later.', 'error');
+    }
 
-//     form.addEventListener('submit', function(event) {
-//         event.preventDefault();
-
-//         const parms = {
-//             f_name: document.getElementById("firstName").value,
-//             l_name: document.getElementById("lastName").value,
-//             email: document.getElementById("email").value,
-//             message: document.getElementById("message").value
-//         };
-
-//         btn.value = 'Sending...';
-//         btn.disabled = true;
-
-//         const serviceID = 'default_service';
-//         const templateID = 'template_yoc8spi';
-
-//         emailjs.send(serviceID, templateID, parms)
-//             .then(() => {
-//                 btn.value = 'Send';
-//                 btn.disabled = false;
-//                 showMessage('Message sent successfully! We will get back to you soon.', 'success');
-//                 form.reset();
-//             }, (err) => {
-//                 btn.value = 'Send';
-//                 btn.disabled = false;
-//                 showMessage('Failed to send message. Please try again later.', 'error');
-//                 console.error('EmailJS error:', err);
-//             });
-//     });
-
-//     function showMessage(message, type) {
-//         const existing = document.querySelector('.form-message');
-//         if (existing) existing.remove();
-
-//         const messageDiv = document.createElement('div');
-//         messageDiv.className = `form-message ${type}`;
-//         messageDiv.setAttribute('role', type === 'error' ? 'alert' : 'status');
-//         messageDiv.textContent = message;
-
-//         form.parentNode.insertBefore(messageDiv, form);
-
-//         // Fade out after 3 seconds, remove after 4 seconds
-//         setTimeout(() => {
-//             messageDiv.classList.add('fade-out');
-//         }, 3000);
-
-//         setTimeout(() => {
-//             messageDiv.remove();
-//         }, 4000);
-//     }
-// });
-
-// const btn = document.getElementById('submit-button');
-
-// document.getElementById('contact-form')
-//     .addEventListener('submit', function(event) {
-//         let parms = {
-//         f_name: document.getElementById("firstName").value,
-//         l_name: document.getElementById("lastName").value,
-//         email: document.getElementById("email").value,
-//         message: document.getElementById("message").value
-//     }
-//     event.preventDefault();
-
-//     btn.value = 'Sending...';
-
-//     const serviceID = 'default_service';
-//     const templateID = 'template_yoc8spi';
-
-//     emailjs.send(serviceID, templateID, parms, this)
-//         .then(() => {
-//         btn.value = 'Send';
-//         alert('Sent!');
-//         }, (err) => {
-//         btn.value = 'Send';
-//         alert(JSON.stringify(err));
-//         });
-// });
-
-form.addEventListener('submit', async function (event) {
+    form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const parms = {
@@ -331,6 +252,8 @@ form.addEventListener('submit', async function (event) {
         btn.disabled = false;
         showMessage('Failed to send message. Please try again later.', 'error');
     }
+    });
+
     function showMessage(message, type) {
         const existing = document.querySelector('.form-message');
         if (existing) existing.remove();
@@ -352,3 +275,32 @@ form.addEventListener('submit', async function (event) {
         }, 4000);
     }
 });
+
+// const btn = document.getElementById('submit-button');
+
+// document.getElementById('contact-form')
+//     .addEventListener('submit', function(event) {
+//         let parms = {
+//         f_name: document.getElementById("firstName").value,
+//         l_name: document.getElementById("lastName").value,
+//         email: document.getElementById("email").value,
+//         message: document.getElementById("message").value
+//     }
+//     event.preventDefault();
+
+//     btn.value = 'Sending...';
+
+//     const serviceID = 'default_service';
+//     const templateID = 'template_yoc8spi';
+
+//     emailjs.send(serviceID, templateID, parms, this)
+//         .then(() => {
+//         btn.value = 'Send';
+//         alert('Sent!');
+//         }, (err) => {
+//         btn.value = 'Send';
+//         alert(JSON.stringify(err));
+//         });
+// });
+
+
