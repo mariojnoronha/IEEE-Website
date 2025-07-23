@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.disabled = true;
 
     try {
-        const res = await fetch('/api/send-email', {
+        const res = await fetch('/api/send-email.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(parms)
