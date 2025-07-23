@@ -1,0 +1,7 @@
+{
+    "name": "ieeecsxim",
+    "type": "module",
+    "dependencies": {
+        "@emailjs/nodejs": "^3.12.0"
+    }
+}

@@ -196,56 +196,159 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 }
 
 // Contact form message handling
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('.contact-form');
-    const { search } = window.location;
-    const urlParams = new URLSearchParams(search);
-    const success = urlParams.get('success');
-    const error   = urlParams.get('error');
 
-    if (success === 'true') {
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const form = document.getElementById('contact-form');
+//     const btn = document.getElementById('submit-button');
+
+//     if (!form || !btn) return;
+
+//     const urlParams = new URLSearchParams(window.location.search);
+//     const error = urlParams.get('error');
+//     const success = urlParams.get('success');
+
+//     if (success === 'true') {
+//         showMessage('Message sent successfully! We will get back to you soon.', 'success');
+//     } else if (error === 'config') {
+//         showMessage('Server configuration error. Please try again later.', 'error');
+//     } else if (error === 'send') {
+//         showMessage('Failed to send message. Please try again later.', 'error');
+//     }
+
+//     form.addEventListener('submit', function(event) {
+//         event.preventDefault();
+
+//         const parms = {
+//             f_name: document.getElementById("firstName").value,
+//             l_name: document.getElementById("lastName").value,
+//             email: document.getElementById("email").value,
+//             message: document.getElementById("message").value
+//         };
+
+//         btn.value = 'Sending...';
+//         btn.disabled = true;
+
+//         const serviceID = 'default_service';
+//         const templateID = 'template_yoc8spi';
+
+//         emailjs.send(serviceID, templateID, parms)
+//             .then(() => {
+//                 btn.value = 'Send';
+//                 btn.disabled = false;
+//                 showMessage('Message sent successfully! We will get back to you soon.', 'success');
+//                 form.reset();
+//             }, (err) => {
+//                 btn.value = 'Send';
+//                 btn.disabled = false;
+//                 showMessage('Failed to send message. Please try again later.', 'error');
+//                 console.error('EmailJS error:', err);
+//             });
+//     });
+
+//     function showMessage(message, type) {
+//         const existing = document.querySelector('.form-message');
+//         if (existing) existing.remove();
+
+//         const messageDiv = document.createElement('div');
+//         messageDiv.className = `form-message ${type}`;
+//         messageDiv.setAttribute('role', type === 'error' ? 'alert' : 'status');
+//         messageDiv.textContent = message;
+
+//         form.parentNode.insertBefore(messageDiv, form);
+
+//         // Fade out after 3 seconds, remove after 4 seconds
+//         setTimeout(() => {
+//             messageDiv.classList.add('fade-out');
+//         }, 3000);
+
+//         setTimeout(() => {
+//             messageDiv.remove();
+//         }, 4000);
+//     }
+// });
+
+// const btn = document.getElementById('submit-button');
+
+// document.getElementById('contact-form')
+//     .addEventListener('submit', function(event) {
+//         let parms = {
+//         f_name: document.getElementById("firstName").value,
+//         l_name: document.getElementById("lastName").value,
+//         email: document.getElementById("email").value,
+//         message: document.getElementById("message").value
+//     }
+//     event.preventDefault();
+
+//     btn.value = 'Sending...';
+
+//     const serviceID = 'default_service';
+//     const templateID = 'template_yoc8spi';
+
+//     emailjs.send(serviceID, templateID, parms, this)
+//         .then(() => {
+//         btn.value = 'Send';
+//         alert('Sent!');
+//         }, (err) => {
+//         btn.value = 'Send';
+//         alert(JSON.stringify(err));
+//         });
+// });
+
+form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const parms = {
+        f_name: document.getElementById("firstName").value,
+        l_name: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+    };
+
+    btn.value = 'Sending...';
+    btn.disabled = true;
+
+    try {
+        const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(parms)
+        });
+
+        const result = await res.json();
+        btn.value = 'Send';
+        btn.disabled = false;
+
+        if (res.ok) {
         showMessage('Message sent successfully! We will get back to you soon.', 'success');
-    } else if (error === 'send') {
+        form.reset();
+        } else {
+        throw new Error(result.message || 'Unknown error');
+        }
+    } catch (err) {
+        console.error('Error:', err);
+        btn.value = 'Send';
+        btn.disabled = false;
         showMessage('Failed to send message. Please try again later.', 'error');
-    } else if (error === 'config') {
-        showMessage('Server configuration error. Please try again later.', 'error');
     }
+    function showMessage(message, type) {
+        const existing = document.querySelector('.form-message');
+        if (existing) existing.remove();
 
-    function showMessage(msg, type) {
-        const banner = document.createElement('div');
-        banner.className = `form-message ${type}`;
-        banner.textContent = msg;
-        form.parentNode.insertBefore(banner, form);
-        setTimeout(() => banner.remove(), 4000);
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `form-message ${type}`;
+        messageDiv.setAttribute('role', type === 'error' ? 'alert' : 'status');
+        messageDiv.textContent = message;
+
+        form.parentNode.insertBefore(messageDiv, form);
+
+        // Fade out after 3 seconds, remove after 4 seconds
+        setTimeout(() => {
+            messageDiv.classList.add('fade-out');
+        }, 3000);
+
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 4000);
     }
-    });
-
-// Set the length of the name for responsive font size
-
-
-function toggleChat() {
-    const chat = document.getElementById('chatbox');
-    chat.style.display = 'block';
-    setTimeout(() => document.addEventListener('click', handleOutsideClick), 10);
-}
-
-function handleOutsideClick(e) {
-    const chat = document.getElementById('chatbox');
-    const button = document.querySelector('.chatbot-button');
-    if (!chat.contains(e.target) && !button.contains(e.target)) {
-    chat.style.display = 'none';
-    document.removeEventListener('click', handleOutsideClick);
-    }
-}
-
-function reply(type) {
-    const response = document.getElementById('response');
-    if (type === 'orientation') {
-    response.innerText = 'Orientation will be held on 5th August, 2025.';
-    } else if (type === 'upcoming') {
-    response.innerText = 'Our next event is the AI Innovation Hackathon on 20th August.';
-    } else if (type === 'intro') {
-    response.innerText = 'Introductory event is scheduled for 1st August, 2025.';
-    }
-}
-
+});
