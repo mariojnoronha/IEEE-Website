@@ -9,10 +9,12 @@ export default async function handler(req, res) {
     const { f_name, l_name, email, message } = req.body;
 
     try {
-        emailjs.init({
-            publicKey: process.env.EMAILJS_PUBLIC_KEY,
-            privateKey: process.env.EMAILJS_PRIVATE_KEY,
-        });
+        (function(){
+            emailjs.init({
+                publicKey: process.env.EMAILJS_PUBLIC_KEY,
+                privateKey: process.env.EMAILJS_PRIVATE_KEY,
+            });
+        })();
         const response = await emailjs.send(
         process.env.EMAILJS_SERVICE_ID,
         process.env.EMAILJS_TEMPLATE_ID,
